@@ -12,7 +12,7 @@
             <a href="#" class="logo">Gemesh</a>
             <div class="nav-links">
                 <a href="#">Home</a>
-              
+                <a href="#faq">FAQ</a>
                 <a href="mailto:info@gemicates.in" class="contact-btn">Contact</a>
             </div>
         </nav>
@@ -128,6 +128,28 @@
                 <p>These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of Gemesh shall be subject to the exclusive jurisdiction of the courts located in India.</p>
             </div>
 
+            <div class="faq-section" id="faq">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question">How do I connect my IoT device to WiFi?</div>
+                    <div class="faq-answer">
+                        <p>Navigate to device configuration, select + button, and follow the guided instructions. Ensure your device is in pairing mode and connected to a 2.4GHz network.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I reset my IoT device to factory settings?</div>
+                    <div class="faq-answer">
+                        <p>Press and hold the reset button for 10-15 seconds until the LED indicator changes color or pattern. The device will return to factory settings and require reconfiguration.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I control multiple IoT devices simultaneously?</div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Our platform supports multi-device control. Create custom groups and automation scenes to manage multiple devices with single commands or schedules.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="contact-section">
                 <h2>Questions?</h2>
                 <p style="color: #6e6e73; margin-bottom: 20px;">If you have any questions about these Terms and Conditions, we're here to help.</p>
@@ -138,10 +160,9 @@
     </div>
 
     <footer>
-            <div class="footer-bottom">
-                <p>Copyright © 2025 Gemicates Technologies. All rights reserved.</p>
-                <p>Gemesh is a registered trademark of Gemicates Technologies.</p>
-            </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Gemicates Technologies. All rights reserved.</p>
+            <p>Gemesh is a registered trademark of Gemicates Technologies.</p>
         </div>
     </footer>
 
@@ -153,6 +174,30 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const isOpen = item.classList.contains('active');
+
+                // Close all other open FAQs
+                document.querySelectorAll('.faq-question').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.nextElementSibling.style.maxHeight = null;
+                    }
+                });
+
+                // Toggle the clicked FAQ
+                if (!isOpen) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    item.classList.remove('active');
+                    answer.style.maxHeight = null;
+                }
+            });
         });
     </script>
 </body>
